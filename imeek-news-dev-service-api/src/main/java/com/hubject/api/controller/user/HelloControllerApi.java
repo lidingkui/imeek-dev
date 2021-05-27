@@ -5,7 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-@Api(value = "controller的标题", tags = {"xx功能的controller"})
+@Api(value = "controller的标题", tags = {"xx功能的controller"})// 这个定义了Swagger的标题名称
 public interface HelloControllerApi {
 
     /**

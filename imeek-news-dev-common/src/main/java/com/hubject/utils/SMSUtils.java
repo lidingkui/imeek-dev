@@ -11,7 +11,11 @@ import com.aliyuncs.profile.DefaultProfile;
 import com.hubject.utils.extend.AliyunResource;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
+/*
+* 阿里云发送短信的工具类
+*
+*
+* */
 @Component
 public class SMSUtils {
 

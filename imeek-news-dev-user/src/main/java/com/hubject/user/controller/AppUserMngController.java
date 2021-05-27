@@ -38,9 +38,6 @@ public class AppUserMngController extends BaseController implements AppUserMngCo
                                     Integer page,
                                     Integer pageSize) {
 
-//        System.out.println(startDate);
-//        System.out.println(endDate);
-
         if (page == null) {
             page = COMMON_START_PAGE;
         }

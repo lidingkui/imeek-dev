@@ -11,6 +11,7 @@ public class HelloController implements HelloControllerApi {
 
     final static Logger logger = LoggerFactory.getLogger(HelloController.class);
 
+    @Override
     public Object hello() {
         return GraceJSONResult.ok();
     }

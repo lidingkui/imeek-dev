@@ -16,7 +16,7 @@ public interface AppUserMngControllerApi {
 
     @PostMapping("queryAll")
     @ApiOperation(value = "查询所有网站用户", notes = "查询所有网站用户", httpMethod = "POST")
-    public GraceJSONResult queryAll(@RequestParam String nickname,
+     GraceJSONResult queryAll(@RequestParam String nickname,
                                     @RequestParam Integer status,
                                     @RequestParam Date startDate,
                                     @RequestParam Date endDate,
@@ -26,15 +26,15 @@ public interface AppUserMngControllerApi {
 
     @PostMapping("userDetail")
     @ApiOperation(value = "查看用户详情", notes = "查看用户详情", httpMethod = "POST")
-    public GraceJSONResult userDetail(@RequestParam String userId);
+     GraceJSONResult userDetail(@RequestParam String userId);
 
     @PostMapping("freezeUserOrNot")
     @ApiOperation(value = "冻结用户或者解冻用户", notes = "冻结用户或者解冻用户", httpMethod = "POST")
-    public GraceJSONResult freezeUserOrNot(@RequestParam String userId,
+     GraceJSONResult freezeUserOrNot(@RequestParam String userId,
                                            @RequestParam Integer doStatus);
 
 
     @GetMapping("queryByIds")
     @ApiOperation(value = "根据用户id查询用户", notes = "根据用户id查询用户", httpMethod = "GET")
-    public GraceJSONResult queryAll(@RequestParam String userIds);
+     GraceJSONResult queryAll(@RequestParam String userIds);
 }

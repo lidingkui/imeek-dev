@@ -24,11 +24,14 @@ public class Swagger2 {
     // 配置swagger2核心配置 docket
     @Bean
     public Docket createRestApi() {
+        //每个服务定义一个包，一定是每个服务的Controller
         Predicate<RequestHandler> adminPredicate = RequestHandlerSelectors.basePackage("com.hubject.admin.controller");
 //        Predicate<RequestHandler> articlePredicate = RequestHandlerSelectors.basePackage("com.imooc.article.controller");
         Predicate<RequestHandler> userPredicate = RequestHandlerSelectors.basePackage("com.hubject.user.controller");
         Predicate<RequestHandler> filesPredicate = RequestHandlerSelectors.basePackage("com.hubject.files.controller");
 
+
+        //需要扫描那个服务的包
         return new Docket(DocumentationType.SWAGGER_2)  // 指定api类型为swagger2
                 .apiInfo(apiInfo())                 // 用于定义api文档汇总信息
                 .select()
@@ -39,6 +42,7 @@ public class Swagger2 {
     }
 
     private ApiInfo apiInfo() {
+        //文档信息
         return new ApiInfoBuilder()
                 .title("慕课新闻·自媒体接口api")                       // 文档页标题
                 .contact(new Contact("imooc",
