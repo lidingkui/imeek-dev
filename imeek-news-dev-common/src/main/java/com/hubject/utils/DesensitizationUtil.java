@@ -19,10 +19,10 @@ public class DesensitizationUtil {
         String mail = commonDisplay("admin@imooc.com");
         String address = commonDisplay("北京大运河东路888号");
 
-        System.out.println(name);
-        System.out.println(mobile);
-        System.out.println(mail);
-        System.out.println(address);
+        System.out.println("名字为："+name);
+        System.out.println("电话为："+mobile);
+        System.out.println("邮箱为："+mail);
+        System.out.println("地址为："+address);
     }
 
     /**

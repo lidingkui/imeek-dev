@@ -7,6 +7,10 @@ import org.springframework.stereotype.Component;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
+/*
+ * 基于雪花算法的分布式ID   主要用于微服务之间需要分库分表
+ * 那么数据库表主键id必须保证全局（全库）唯一，不得重复
+ */
 @Component
 public class Sid {
     private static WorkerIdStrategy workerIdStrategy;
@@ -54,7 +58,7 @@ public class Sid {
     
     public static void main(String[] args) {
 		String aa = new Sid().nextShort();
-		String bb = new Sid().next();
+		String bb = Sid.next();
 
 		System.out.println(aa);
 		System.out.println(bb);

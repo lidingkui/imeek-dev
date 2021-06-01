@@ -105,16 +105,17 @@ public class UserServiceImpl implements UserService {
         userInfo.setUpdatedTime(new Date());
         userInfo.setActiveStatus(UserStatus.ACTIVE.type);
 
+        //更新数据库中的信息
         int result = appUserMapper.updateByPrimaryKeySelective(userInfo);
         if (result != 1) {
             GraceException.display(ResponseStatusEnum.USER_UPDATE_ERROR);
         }
 
-        // 再次查询用户的最新信息，放入redis中
+        // 再次从数据库中查询用户的最新信息，并且放入redis中
         AppUser user = getUser(userId);
         redis.set(REDIS_USER_INFO + ":" + userId, JsonUtils.objectToJson(user));
 
-        // 缓存双删策略
+        // 缓存延时双删策略  删除后不需要添加到redis中，因为前端的请求会再过来了，又可以重新设置下来
         try {
             Thread.sleep(100);
             redis.del(REDIS_USER_INFO + ":" + userId);
