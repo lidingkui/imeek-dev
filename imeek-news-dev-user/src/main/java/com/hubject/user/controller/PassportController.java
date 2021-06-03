@@ -77,11 +77,11 @@ public class PassportController extends BaseController implements PassportContro
 
         // 2. 查询数据库，判断该用户注册
         AppUser user = userService.queryMobileIsExist(mobile);
+        // 如果用户不为空，并且状态为冻结，则直接抛出异常，禁止登录
         if (user != null && user.getActiveStatus().equals(UserStatus.FROZEN.type)) {
-            // 如果用户不为空，并且状态为冻结，则直接抛出异常，禁止登录
             return GraceJSONResult.errorCustom(ResponseStatusEnum.USER_FROZEN);
-        } else if (user == null) {
             // 如果用户没有注册过，则为null，需要注册信息入库
+        } else if (user == null) {
             user = userService.createUser(mobile);
         }
 

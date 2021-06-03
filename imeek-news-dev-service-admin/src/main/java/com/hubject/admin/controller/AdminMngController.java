@@ -13,6 +13,7 @@ import com.hubject.pojo.bo.NewAdminBO;
 import com.hubject.utils.FaceVerifyUtils;
 import com.hubject.utils.PagedGridResult;
 import com.hubject.utils.RedisOperator;
+import io.swagger.annotations.ApiOperation;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -20,6 +21,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.kafka.KafkaProperties;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.crypto.bcrypt.BCrypt;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.client.RestTemplate;
 
@@ -87,8 +90,9 @@ public class AdminMngController extends BaseController implements AdminMngContro
         setCookie(request, response, "aname", admin.getAdminName(), COOKIE_MONTH);
     }
 
-    @Override
-    public GraceJSONResult adminIsExist(String username) {
+    @ApiOperation(value = "查询admin用户名是否存在", notes = "查询admin用户名是否存在", httpMethod = "POST")
+    @PostMapping("/adminIsExist")
+    public GraceJSONResult adminIsExist(@RequestParam String username){
         checkAdminExist(username);
         return GraceJSONResult.ok();
     }
